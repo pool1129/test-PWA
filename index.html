@@ -1,34 +1,46 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PWA 적용</title>
+<html lang="en">
+  <head>
+    <title>Hello!</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+  </head>
+  <body>
+    <h1>InstallableR</h1>
 
-    <link rel="manifest" href="manifest.json" />
+    <p id="requireHTTPS" class="hidden">
+      <b>STOP!</b> This page <b>must</b> be served over HTTPS. Please
+      <a>reload this page via HTTPS</a>.
+    </p>
+    <p id="requireTopLevel" class="hidden">
+      <b>STOP!</b> This page <b>must not</b> be served in an iframe. Please
+      <a target="_top">click here</a> to load the page as the top-level window.
+    </p>
 
-    <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
-    <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png">
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="apple-mobile-web-app-title" content="PWA 테스트" />
+    <p>
+      Make me installable, follow the
+      <a href="https://web.dev/codelab-make-installable/">instructions</a> here.
+    </p>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-    <meta name="description" content="사이트 설명" />
-    <meta name="theme-color" content="#f1718c" />
+    <!-- Install button, hidden by default -->
+    <div id="installContainer" class="hidden">
+      <button id="butInstall" type="button">Install</button>
+    </div>
 
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
 
-</head>
-<body>
-    <h1>PWA 적용</h1>
-
-    <script>
-        if ("serviceWorker" in navigator) {
-            window.addEventListener("load", () => {
-                navigator.serviceWorker.register("/sw.js");
-            });
-        }
-    </script>
-</body>
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div
+      class="glitchButton"
+      style="position: fixed; top: 20px; right: 20px"
+    ></div>
+    <script src="https://button.glitch.me/button.js"></script>
+  </body>
 </html>
